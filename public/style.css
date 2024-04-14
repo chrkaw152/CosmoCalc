@@ -1,0 +1,194 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    background-color: #1B1A55;
+    color: #F6F5F2;
+    margin: 0;
+}
+
+.navbar {
+    background-color: #070F2B;
+    font-size: 145%;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+    border-bottom: #F6F5F2 solid 3px;
+}
+
+.links a {
+    color: #9290C3;
+    text-decoration: none;
+    padding: 14px 16px;
+    float: left;
+    display: block;
+}
+
+.links a:hover {
+    color: #F6F5F2;
+}
+
+#title {
+    color: #F6F5F2;
+    text-decoration: none;
+    padding: 14px 16px;
+    float: left;
+    display: block;
+}
+
+#about {
+    font-size: 240%;
+}
+
+.main {
+    position: absolute;
+    /*background-color: #1B1A55;*/
+    top: 10%;
+    width: 45%;
+    padding: 2% 3%;
+    border-radius: 8px;
+}
+
+#bgimg {
+    position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("https://cdn.hswstatic.com/gif/gettyimages-139494347.jpg");
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #1B1A55;
+    overflow: auto;
+}
+
+#modalContainer {
+    opacity: 0.95;
+}
+
+.modalHeader {
+    background-color: #9290C3;
+    flex: 0 0 auto;
+    text-align: right;
+}
+
+.modalBody {
+    background-color: #463E80;
+}
+
+.modalContent {
+    position: relative;
+    width: 35%;
+    height: 35%;
+    top: 35%;
+    left: 30%;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    word-wrap: break-word;
+}
+
+#planetDesc {
+    margin: 3%;
+    font-size: 110%;
+}
+
+#planetName {
+    font-size: 160%;
+    font-weight: bold;
+}
+
+.close {
+    color: #463E80;
+    font-weight: bold;
+    margin: 2%;
+    font-size: 130%;
+}
+
+.close:hover, .close:focus {
+    color: #F6F5F2;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.img {
+    position: absolute;
+    margin: 2%;
+    width: 10%;
+}
+
+.img:hover {
+    cursor: pointer;
+}
+
+#sun {
+    left: -50%;
+    width: 90%;
+    top: 50%;
+}
+
+#mercury {
+    left: 35%;
+    width: 7%;
+    top: 170%;
+}
+
+#venus {
+    left: 45%;
+    width: 9%;
+    top: 165%;
+}
+
+#earth {
+    left: 57%;
+    width: 13%;
+    top: 168%;
+}
+
+#mars {
+    left: 75%;
+    width: 5%;
+    top: 170%;
+}
+
+#jupiter {
+    left: 70%;
+    width: 60%;
+    top: 135%;
+}
+
+#saturn {
+    left: 104%;
+    width: 65%;
+    transform: rotate(-20deg);
+    top: 132%;
+}
+
+#uranus {
+    left: 157%;
+    width: 12%;
+    top: 165%;
+}
+
+#neptune {
+    left: 175%;
+    width: 11%;
+    top: 165%;
+}

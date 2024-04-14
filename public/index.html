@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <link
+     rel="icon"
+     href="https://media.discordapp.net/attachments/719738658818752513/1228759734858027018/image.png?ex=662d36ae&is=661ac1ae&hm=e8fd3d542cb93142e84b787ff46edcae8a7d9fdfc2c31ed110e8e8700db9a8a6&=&format=webp&quality=lossless&width=952&height=952"
+   />
+   <title>CosmoCalc</title>
+   <link rel="stylesheet" href="/public/style.css" />
+   <script src="/public/script.js" defer></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+ </head>
+ <body>
+   <div class="navbar">
+    <a id="title" href="/public/index.html" id = "this">CosmoCalc</a>
+    <div class="links">
+     <a href="/public/distance.html">Distance from Sun</a>
+     <a href="/public/timeCalculator.html">Temporal Delay</a>
+     <a href="/public/lifeCalculator.html">Life Sustainability</a>
+     <a href="/public/rocketLaunch.html">Rocket Launch Countdown</a>
+    </div>
+    </div>
+
+    <div id="bgimg"></div>
+
+   <div class="main">
+     <div class="home">
+      <h1 id="about">Our Solar System</h1>
+      <p>Click on an object to learn more about it!</p>
+
+      <div id="modalContainer" class="modal">
+        <div class="modalContent">
+          <div class="modalHeader">
+            <span class="close">&times;</span>
+          </div>
+          <div class="modalBody">
+            <h2 id="planetName">Planet</h2>
+            <p id="planetDesc">Description</p>
+          </div>
+        </div>
+      </div>
+
+      <div class = "planets">
+        <!--the sun-->
+        <img
+          class="img"
+          id="sun"
+          src="https://media.discordapp.net/attachments/719738658818752513/1228771949581435021/sun.png?ex=662d420e&is=661acd0e&hm=2ca56d5ab034d069bac1fa5dbec5440d2e79b7de3a4d5dd6a3e54916f9911907&=&format=webp&quality=lossless&width=996&height=952"
+          alt="Image of the Sun"
+        />
+      </div>
+
+      <div class = "planets">
+        <!--mercury-->
+        <img
+          class="img"
+          id="mercury"
+          src="https://media.discordapp.net/attachments/719738658818752513/1228774954191949925/70G1XlwAAAAAElFTkSuQmCC.png?ex=662d44da&is=661acfda&hm=0c4db6f5fdb6204dacde495a319fc3aad9c67245f1b23b87b39b0d2a1efd2ca6&=&format=webp&quality=lossless&width=1692&height=952"
+          alt="Image of Mercury"
+        />
+      </div>
+
+      <div class = "planets">
+        <!--venus-->
+        <img
+          class="img"
+          id="venus"
+          src="https://media.discordapp.net/attachments/719738658818752513/1228774969115283549/w9voslvQ9vOAAAAABJRU5ErkJggg.png?ex=662d44de&is=661acfde&hm=9947848bfbfab66ad9e06453b2cfeaead2250676fd0b4dff9f76faa5dbdb9ead&=&format=webp&quality=lossless&width=700&height=700"
+          alt="Image of Venus"
+        />
+      </div>
+
+      <div class = "planets">
+        <!--earth-->
+        <img
+          class="img"
+          id="earth"
+          src="https://media.discordapp.net/attachments/719738658818752513/1228775001226870965/KTfHV5biRAAiRAAiRAAiRAAiRAAiTw2BKg0HxsLw0PjARIgARIgARIgARIgARIgARIgARIgARIgARI4LMEKDT5miABEiABEiABEiABEiABEiABEiABEiABEiABEjg2BCg0j82l4oGSAAmQAAmQwNNNgFsOnu7rz7MnARIgARIgARIgARIggUCAQpOvBRIgARIgARIgARIggc9JgFr5c4LizUiABEiABEiABEiABB4igf8HBzz8qziz9YAAAAASUVORK5CYII.png?ex=662d44e5&is=661acfe5&hm=28aa48970792223a04e09e46c380baf531d21f0223f293e99f810fcda4751cef&=&format=webp&quality=lossless&width=1100&height=620"
+          alt="Image of Earth"
+        />
+      </div>
+
+      <div class = "planets">
+        <!--mars-->
+        <img
+          class="img"
+          id="mars"
+          src="https://media.discordapp.net/attachments/719738658818752513/1228775034068402348/P9GYTQUGd4nhgAAAABJRU5ErkJggg.png?ex=662d44ed&is=661acfed&hm=baa7de8a353a2f5bce7752735413135022d407c3ba31acf2d5b039bf5e447c9f&=&format=webp&quality=lossless&width=700&height=700"
+          alt="Image of Mars"  
+        />
+      </div>
+
+      <div class = "planets">
+        <!--jupiter-->
+        <img
+          class="img"
+          id="jupiter"
+          src="https://media.discordapp.net/attachments/719738658818752513/1228775318291218432/w7S8kiU29RwAAAABJRU5ErkJggg.png?ex=662d4531&is=661ad031&hm=13d14ca31cb28c3ca782083ad7cd07d0db375190621b753b676cc81b76e16222&=&format=webp&quality=lossless&width=1876&height=952"
+          alt="Image of Jupiter"
+        />
+      </div>
+
+      <div class = "planets">
+        <!--saturn-->
+        <img
+          class="img"
+          id="saturn"
+          src="https://media.discordapp.net/attachments/719738658818752513/1228775327640322079/wlomJxVSMaIQAAAABJRU5ErkJggg.png?ex=662d4533&is=661ad033&hm=41bb1954a80d2c892940cd12b11b17d7c4222253012f809435b888605d1424c5&=&format=webp&quality=lossless&width=1100&height=618"
+          alt="Image of Saturn"
+        />
+      </div>
+
+      <div class = "planets">
+        <!--uranus-->
+        <img
+          class="img"
+          id="uranus"
+          src="https://media.discordapp.net/attachments/719738658818752513/1228775347932102748/n25oUQTbGw8AAAAABJRU5ErkJggg.png?ex=662d4538&is=661ad038&hm=14bc0c52b4e3c4e875f2dc3f52419e54d9550787dab6ce2a168f196bd79a11ab&=&format=webp&quality=lossless&width=700&height=700"
+          alt="Image of Uranus"
+        />
+      </div>
+
+      <div class = "planets">
+        <!--neptune-->
+        <img
+          class="img"
+          id="neptune"
+          src="https://media.discordapp.net/attachments/719738658818752513/1228775367477690460/BxkekOBdj4KyAAAAAElFTkSuQmCC.png?ex=662d453d&is=661ad03d&hm=5fa7af9351d2cb346254c787e108fabd612e49d77d0fe42dfd23b37f2fe56e70&=&format=webp&quality=lossless&width=702&height=700"
+          alt="Image of Neptune"
+        />
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+    </div>
+   </div>
+ </body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+     rel="icon"
+     href="https://media.discordapp.net/attachments/719738658818752513/1228759734858027018/image.png?ex=662d36ae&is=661ac1ae&hm=e8fd3d542cb93142e84b787ff46edcae8a7d9fdfc2c31ed110e8e8700db9a8a6&=&format=webp&quality=lossless&width=952&height=952"
+   />
+    <title>Life Sustainability Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #1B1A55;
+            color: #F6F5F2;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #070F2B;
+            font-size: 145%;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 5;
+            border-bottom: #F6F5F2 solid 3px;
+        }
+
+        .links a {
+            color: #9290C3;
+            text-decoration: none;
+            padding: 14px 16px;
+            float: left;
+            display: block;
+        }
+
+        .links a:hover {
+            color: #F6F5F2;
+        }
+
+        #title {
+            color: #9290C3;
+            text-decoration: none;
+            padding: 14px 16px;
+            float: left;
+            display: block;
+        }
+
+        #title:hover {
+            color: #F6F5F2;
+        }
+
+        #this {
+            color: #F6F5F2;
+            text-decoration: none;
+            padding: 14px 16px;
+            float: left;
+            display: block;
+        }
+
+        #about {
+            font-size: 200%;
+        }
+
+        .main {
+            position: absolute;
+            /*background-color: #1B1A55;*/
+            top: 15%;
+            width: 45%;
+            padding: 2% 3%;
+            border-radius: 8px;
+        }
+
+        .home {
+            position: relative;
+            width: 90%;
+            height: 80%;
+            top: 10%;
+            left: 60%;
+            padding: 2%;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            word-wrap: break-word;
+            background-color: #463E80;
+            border-radius: 10px;
+        }
+
+        #bgimg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("https://cdn.hswstatic.com/gif/gettyimages-139494347.jpg");
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        h2 {
+            color: #CCCCFF;
+        }
+
+        select, option, input {
+            font-family: 'Kanit', sans-serif;
+            font-size: 110%;
+            border-radius: 3px;
+        }
+
+        option, input {
+            margin: 1%;
+        }
+        
+        p,label {
+            font-family: 'Kanit', sans-serif;
+            font-size: 120%;
+        }
+
+        span {
+            color: #CCCCFF;
+            font-weight: bold;
+        }
+        
+        button {
+            background-color: #CCCCFF;
+            font-size: 115%;
+            border-radius: 10px;
+            margin: 2%;
+        }
+
+        #result {
+            font-size: 130%;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a id="title" href="/public/index.html">CosmoCalc</a>
+        <div class="links">
+         <a href="/public/distance.html">Distance from Sun</a>
+         <a href="/public/timeCalculator.html">Temporal Delay</a>
+         <a href="/public/lifeCalculator.html" id = "this">Life Sustainability</a>
+         <a href="/public/rocketLaunch.html">Rocket Launch Countdown</a>
+        </div>
+       </div>
+       <div id="bgimg"></div>
+    
+      <div class="main">
+        <div class="home">
+            <h1>Life Sustainability Calculator</h1>
+            <form id="planetForm">
+                <label for="water">Presence of Water:</label>
+                <select id="water" name="water">
+                    <option value="">-- Select --</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select><br><br>
+        
+                <label for="temperatureMin">Average Temperature Range in F° (Min):</label>
+                <input type="number" id="temperatureMin" name="temperatureMin" step="0.01"><br><br>
+        
+                <label for="temperatureMax">Average Temperature Range in F° (Max):</label>
+                <input type="number" id="temperatureMax" name="temperatureMax" step="0.01"><br><br>
+        
+                <label for="atmosphericComposition">Atmospheric Composition:</label>
+                <div id="atmosphericCompositionInputs">
+                    <div class="atmosphericCompositionInput">
+                        <select name="atmosphericElement">
+                            <option value="oxygen">Oxygen</option>
+                            <option value="nitrogen">Nitrogen</option>
+                            <option value="hydrdogen">Hydrogen</option>
+                            <option value="carbon">Carbon</option>
+                            <option value="phosphorus">Phosphorus</option>
+                            <option value="argon">Argon</option>
+                            <option value="neon">Neon</option>
+                            <option value="argon">Argon</option>
+                            <option value="sulfur">Sulfur</option>
+                        </select>
+                        <input type="number" name="atmosphericPercentage" placeholder="Percentage" step="0.01">
+                        <button type="button" onclick="removeAtmosphericElement(this)">Remove</button>
+                    </div>
+                </div>
+                <button type="button" onclick="addAtmosphericElement()">Add Element</button>
+                
+                <br>
+                <br>
+                
+                <label for="planetaryComposition">Planetary Composition:</label>
+                <select id="planetaryComposition" name="planetaryComposition">
+                    <option value="">-- Select --</option>
+                    <option value="rocky">Rocky</option>
+                    <option value="gaseous">Gaseous</option>
+                </select><br><br>
+        
+        
+                <label for="magneticField">Presence of Magnetic Field:</label>
+                <select id="magneticField" name="magneticField">
+                    <option value="">-- Select --</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select><br><br>
+        
+                <label for="planetSize">Size of Planet (Relative to Earth):</label>
+                <input type="number" id="planetSize" name="planetSize" step="0.01"><br><br>
+        
+                <label for="distanceFromStar">Distance from Star (AU):</label>
+                <input type="number" id="distanceFromStar" name="distanceFromStar" step="0.01"><br><br>
+        
+                <button type="button" id="calculateButton">Calculate</button>
+            </form>
+            <br>
+            <div id="result"></div>
+         <br />
+       </div>
+      </div>
+
+    <script>
+
+        function addAtmosphericElement() {
+            var div = document.createElement("div");
+            div.className = "atmosphericCompositionInput";
+            div.innerHTML = `
+                <select name="atmosphericElement">
+                    <option value="oxygen">Oxygen</option>
+                    <option value="nitrogen">Nitrogen</option>
+                    <option value="hydrdogen">Hydrogen</option>
+                    <option value="carbon">Carbon</option>
+                    <option value="phosphorus">Phosphorus</option>
+                    <option value="argon">Argon</option>
+                    <option value="neon">Neon</option>
+                    <option value="argon">Argon</option>
+                    <option value="sulfur">Sulfur</option>
+                </select>
+            <input type="number" name="atmosphericPercentage" placeholder="Percentage" step="0.01">
+            <button type="button" onclick="removeAtmosphericElement(this)">Remove</button>
+            `;
+            document.getElementById("atmosphericCompositionInputs").appendChild(div);
+        }
+
+        function removeAtmosphericElement(button) {
+            button.parentNode.remove();
+        }
+
+        var totalPercent = 0;
+
+
+        function calculateLivability() {
+            // Get input values
+            var water = document.getElementById("water").value;
+            var temperatureMin = parseFloat(document.getElementById("temperatureMin").value);
+            var temperatureMax = parseFloat(document.getElementById("temperatureMax").value);
+            var atmosphericElements = [];
+            var atmosphericPercentages = [];
+            var elements = document.querySelectorAll('.atmosphericCompositionInput');
+            elements.forEach(function(element) {
+                var atmosphericElement = element.querySelector('select[name="atmosphericElement"]').value;
+                var atmosphericPercentage = parseFloat(element.querySelector('input[name="atmosphericPercentage"]').value);
+                atmosphericElements.push(atmosphericElement);
+                atmosphericPercentages.push(atmosphericPercentage);
+            });
+            var planetaryComposition = document.getElementById("planetaryComposition").value;
+            var magneticField = document.getElementById("magneticField").value;
+            var planetSize = parseFloat(document.getElementById("planetSize").value);
+            var distanceFromStar = parseFloat(document.getElementById("distanceFromStar").value);
+
+            // Perform input validation
+            if (water === "" || isNaN(temperatureMin) || isNaN(temperatureMax) || planetaryComposition === "" || magneticField === "" || isNaN(planetSize) || isNaN(distanceFromStar)) {
+                return "Error! Invalid input entered.";
+            }
+
+            // Perform calculations based on criteria and weightings
+            var livabilityScore = 0;
+
+            // Criteria for presence of water
+            if (water === "yes") {
+                livabilityScore += 20; // Adjust weightings as needed
+            } else {
+                return "0% - All known life requires water!"
+            }
+
+            // Criteria for temperature range
+            // Example: Higher score for temperatures within Earth-like range
+            if (temperatureMin >= 32 && temperatureMax <= 110) {
+                livabilityScore += 20;
+            } else if (temperatureMin <= -200) {
+                return "0% - Way too cold to support life!";
+            } else if (temperatureMax >= 200) {
+                return "0% - Way too hot to support life!";
+            } else {
+                livabilityScore -= 15
+            }
+
+            // Criteria for atmospheric composition
+            // Example: Higher score for presence of oxygen and nitrogen
+            totalPercent = 0;
+            for (var i = 0; i < atmosphericElements.length; i++) {
+                totalPercent += atmosphericPercentages[i];
+                if (totalPercent > 100) {
+                    return "Error! Atmospheric composition cannot add up to more than 100%"
+                } else if (atmosphericPercentages[i] < 0) {
+                    return "Error! An atmosphere cannot contain a negative amount of an element.";
+                } else if (atmosphericElements[i] === "nitrogen" && atmosphericPercentages[i] >= 75 && atmosphericPercentages[i] < 90) {
+                    livabilityScore += 25;
+                } else if (atmosphericElements[i] === "oxygen" && atmosphericPercentages[i] > 21 && atmosphericPercentages[i] < 60) {
+                    livabilityScore += 8;
+                } else {
+                    livabilityScore -= 40;
+                }
+            }
+
+    if (totalPercent != 100) {
+        return "Error! Atmospheric composition must add up to 100%";
+    }
+
+    // Criteria for planetary composition
+    if (planetaryComposition === "rocky") {
+        livabilityScore += 20;
+    } else {
+        livabilityScore -= 25;
+    }
+
+    // Criteria for presence of magnetic field
+    // Example: Higher score for presence of magnetic field
+    if (magneticField === "yes") {
+        livabilityScore += 15;
+    } else {
+        livabilityScore -= 10;
+    }
+
+    // Criteria for planet size
+    // Example: Higher score for planet size closer to Earth's size
+    if (planetSize >= 0.5 && planetSize <= 2) {
+        livabilityScore += 15;
+    } else if (planetSize > 2 && planetSize <= 5) {
+        livabilityScore += 10;
+    } else if (planetSize > 10) {
+        livabilityScore -= 15
+    }
+
+    // Criteria for distance from star
+    // Example: Higher score for distance within habitable zone
+    if (distanceFromStar >= 0.5 && distanceFromStar <= 2) {
+        livabilityScore += 20;
+    } else if (distanceFromStar < 0.1 || distanceFromStar > 5) {
+        return "0% - Out of suitable range from star to support life!";
+    }
+
+    // Display result to user
+    if (livabilityScore <= 10) {
+        return (Math.random() * 1.99 + 0.01).toFixed(2) + "%";
+    } else {
+        return ((livabilityScore + (Math.random() - 0.5) * 10).toFixed(1)) - 10 + "%";
+    }
+}
+
+// Calculate the livability score initially and display it
+document.getElementById("result").innerHTML = "";
+
+// Add an event listener to the calculate button
+document.getElementById("calculateButton").addEventListener("click", function() {
+    // Call the calculateLivability function and store the returned score
+    var score = calculateLivability();
+
+    // Update the DOM element with the calculated score
+    document.getElementById("result").innerHTML = "Livability Score: " + score;
+});
+
+
+    </script>
+</body>
+</html>

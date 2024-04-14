@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+     rel="icon"
+     href="https://media.discordapp.net/attachments/719738658818752513/1228759734858027018/image.png?ex=662d36ae&is=661ac1ae&hm=e8fd3d542cb93142e84b787ff46edcae8a7d9fdfc2c31ed110e8e8700db9a8a6&=&format=webp&quality=lossless&width=952&height=952"
+   />
+    <title>Temporal Delay Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #1B1A55;
+            color: #F6F5F2;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #070F2B;
+            font-size: 145%;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 5;
+            border-bottom: #F6F5F2 solid 3px;
+        }
+
+        .links a {
+            color: #9290C3;
+            text-decoration: none;
+            padding: 14px 16px;
+            float: left;
+            display: block;
+        }
+
+        .links a:hover {
+            color: #F6F5F2;
+        }
+
+        #title {
+            color: #9290C3;
+            text-decoration: none;
+            padding: 14px 16px;
+            float: left;
+            display: block;
+        }
+
+        #title:hover {
+            color: #F6F5F2;
+        }
+
+        #this {
+            color: #F6F5F2;
+            text-decoration: none;
+            padding: 14px 16px;
+            float: left;
+            display: block;
+        }
+
+        #about {
+            font-size: 200%;
+        }
+
+        .main {
+            position: absolute;
+            /*background-color: #1B1A55;*/
+            top: 15%;
+            width: 45%;
+            padding: 2% 3%;
+            border-radius: 8px;
+        }
+
+        .home {
+            position: relative;
+            width: 90%;
+            height: 80%;
+            top: 10%;
+            left: 60%;
+            padding: 2%;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            word-wrap: break-word;
+            background-color: #463E80;
+            border-radius: 10px;
+        }
+
+        #bgimg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("https://cdn.hswstatic.com/gif/gettyimages-139494347.jpg");
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        h2 {
+            color: #CCCCFF;
+        }
+
+        select, option, input {
+            font-family: 'Kanit', sans-serif;
+            font-size: 110%;
+            border-radius: 3px;
+        }
+
+        option, input {
+            margin: 1%;
+        }
+        
+        p,label {
+            font-family: 'Kanit', sans-serif;
+            font-size: 120%;
+        }
+
+        span {
+            color: #CCCCFF;
+            font-weight: bold;
+        }
+        
+        button {
+            background-color: #CCCCFF;
+            font-size: 115%;
+            border-radius: 10px;
+            margin: 2%;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a id="title" href="/public/index.html">CosmoCalc</a>
+        <div class="links">
+         <a href="/public/distance.html">Distance from Sun</a>
+         <a href="/public/timeCalculator.html" id = "this">Temporal Delay</a>
+         <a href="/public/lifeCalculator.html">Life Sustainability</a>
+         <a href="/public/rocketLaunch.html">Rocket Launch Countdown</a>
+        </div>
+       </div>
+       
+       <div id="bgimg"></div>
+    
+      <div class="main">
+        <div class="home">
+            <h1>Temporal Delay Calculator</h1>
+
+            <h2>Select an Object:</h2>
+        
+            <select id="objects">
+                <option value="sun">The Sun</option>
+                <option value="mercury">Mercury</option>
+                <option value="venus">Venus</option>
+                <option value="mars">Mars</option>
+                <option value="jupiter">Jupiter</option>
+                <option value="saturn">Saturn</option>
+                <option value="uranus">Uranus</option>
+                <option value="neptune">Neptune</option>
+            </select>
+        
+            <h2>Select Time Unit:</h2>
+        
+            <select id="timeUnits">
+                <option value="seconds">Seconds</option>
+                <option value="minutes">Minutes</option>
+                <option value="hours">Hours</option>
+            </select>
+            <br>
+            <p>You selected: <span id="selectedObject"></span></p>
+            <p>Temporal Delay: <span id="temporalDelay"></span> <span id="timeUnit"></span></p>
+            <br />
+       </div>
+      </div>
+
+      <br>
+      <br>
+      <br>
+    <script>
+        var objectTime = { // How long it takes light from that object to reach Earth in seconds
+            sun: 500,
+            mercury: 490,
+            venus: 261,
+            mars: 756,
+            jupiter: 2592,
+            saturn: 4758,
+            uranus: 9540,
+            neptune: 14760
+        };
+
+        var dropdown = document.getElementById("objects");
+        var timeUnitsDropdown = document.getElementById("timeUnits");
+
+        function displaySelectedObject() {
+            var selectedObject = dropdown.options[dropdown.selectedIndex].text;
+            var temporalDelay = objectTime[dropdown.value];
+            var timeUnit = timeUnitsDropdown.value;
+            var convertedTime = convertTime(temporalDelay, timeUnit);
+            document.getElementById("selectedObject").textContent = selectedObject;
+            document.getElementById("temporalDelay").textContent = convertedTime;
+            document.getElementById("timeUnit").textContent = timeUnit;
+        }
+
+        function convertTime(time, unit) {
+            if (unit === "seconds") {
+                return time;
+            } else if (unit === "minutes") {
+                return (time / 60).toLocaleString();
+            } else {
+                return (time / 3600).toLocaleString();
+            }
+        }
+
+        dropdown.addEventListener("change", displaySelectedObject);
+        timeUnitsDropdown.addEventListener("change", displaySelectedObject);
+
+        displaySelectedObject();
+    </script>
+</body>
+</html>
